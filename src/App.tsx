@@ -1,26 +1,24 @@
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Message from "./Message";
 
-const App  = () => {
-  let firstValue: [string, number]  = ['hi', 2]
+const initState = {
+  name: "Manny",
+  message: "hello there!",
+};
 
-  enum Codes  {first = 1, second = 2}
+type State = Readonly<typeof initState>;
 
-  let secondValue : Codes = Codes.first
-
-  const warning =(): void => {
-    console.log('warning');
-    
-  }
+const App = (): any => {
+  const [messageData, setMessageData] = useState<typeof initState>(initState);
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-        The value {secondValue} is of {typeof secondValue} type!
-        </p>
+        <Message name={messageData.name} message={messageData.message} />
       </header>
     </div>
   );
-}
+};
 
 export default App;
